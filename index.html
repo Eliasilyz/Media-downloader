@@ -1,17 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Media Downloader</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="google-site-verification" content="HoZgwYJz6Z5gjLcl6I91BN6MIOZDP9jMApEHGsJidqM" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>SaveFlow — TikTok Downloader, Instagram Downloader & All in One Social Media Downloader</title>
+  <meta name="description" content="SaveFlow is a free all-in-one social media downloader. Download videos, audio, and images from TikTok, Instagram, YouTube, Facebook, Twitter, Spotify, SoundCloud, Pinterest, CapCut, Google Drive, MediaFire, Threads, Douyin, Xiaohongshu, Kuaishou, SnackVideo, Cocofun, and YTS. No ads, fast, and open source." />
+  <meta name="keywords" content="SaveFlow, TikTok downloader, Instagram downloader, IG downloader, Facebook downloader, YouTube downloader, Twitter downloader, Spotify downloader, SoundCloud downloader, Pinterest downloader, all in one downloader, social media downloader, video downloader, audio downloader, free downloader, online downloader, media downloader, CapCut downloader, Google Drive downloader, MediaFire downloader, Threads downloader, Douyin downloader, Xiaohongshu downloader, Kuaishou downloader, SnackVideo downloader, Cocofun downloader, YTS downloader" />
+  <meta name="author" content="Eliasilyz" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="google-site-verification" content="HoZgwYJz6Z5gjLcl6I91BN6MIOZDP9jMApEHGsJidqM" />
+  <link rel="canonical" href="https://tool.farelhanafi.my.id" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SaveFlow — TikTok, Instagram & All in One Social Media Downloader" />
+  <meta property="og:description" content="Download videos, audio, and images from 17+ platforms. Free, fast, and minimal. No ads." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tool.farelhanafi.my.id" />
+  <meta property="og:site_name" content="SaveFlow" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Eliasilyz/Eliasilyz/main/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SaveFlow — TikTok, Instagram & All in One Downloader" />
+  <meta name="twitter:description" content="Download media from 17+ platforms with embedded previews. Free and open source." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Eliasilyz/Eliasilyz/main/og-image.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SaveFlow",
+    "url": "https://tool.farelhanafi.my.id",
+    "description": "Free all-in-one social media downloader supporting TikTok, Instagram, YouTube, Facebook, Twitter, Spotify, SoundCloud, Pinterest, CapCut, Google Drive, MediaFire, Threads, Douyin, Xiaohongshu, Kuaishou, SnackVideo, Cocofun, YTS and more. No ads, open source.",
+    "applicationCategory": "Multimedia",
+    "operatingSystem": "All",
+    "author": {
+      "@type": "Person",
+      "name": "Eliasilyz",
+      "url": "https://github.com/Eliasilyz"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-soft: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-glow: rgba(99,102,241,0.15);
+      --success: #10b981;
+      --error: #ef4444;
+      --warning: #f59e0b;
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.10);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.14);
+      --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1121;
+      --surface: #111827;
+      --surface-alt: #1a2332;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-soft: #64748b;
+      --border: #1e293b;
+      --border-light: #1a2332;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.55);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Header ─────────────────────────── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.85);
+      transition: all var(--transition);
+      padding: 0 20px;
+    }
+    [data-theme="dark"] .header {
+      background: rgba(17,24,39,0.88);
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px var(--accent-glow);
+      flex-shrink: 0;
+    }
+    .logo-text {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 0 0 6px var(--accent-glow);
+    }
+
+    .github-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .github-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 0 0 6px var(--accent-glow);
+    }
+    .github-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ── Main Layout (single column) ───── */
+    .main {
+      flex: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 20px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .header-inner { height: 52px; gap: 8px; }
+      .github-link span { display: none; }
+      .github-link { padding: 8px 10px; border-radius: 50%; aspect-ratio: 1; }
+      .logo { font-size: 1.2rem; }
+      .logo-icon { width: 32px; height: 32px; font-size: 0.95rem; }
+      .main { padding: 16px 12px 32px; }
+    }
+
+    /* ── Hero Card (full width) ────────── */
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: all var(--transition);
+    }
+    .hero-card:hover::before { transform: scale(1.2); }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* ── Input Row ──────────────────────── */
+    .input-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .input-row select {
+      padding: 13px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      background: var(--surface-alt);
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      min-width: 150px;
+      flex-shrink: 0;
+    }
+    .input-row select:hover { border-color: var(--accent); }
+    .input-row select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+    .input-row input {
+      flex: 1;
+      min-width: 200px;
+      padding: 13px 18px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      background: var(--surface-alt);
+      color: var(--text);
+      transition: all var(--transition);
+    }
+    .input-row input::placeholder { color: var(--text-soft); }
+    .input-row input:hover { border-color: var(--accent); }
+    .input-row input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+      background: var(--surface);
+    }
+    .btn-fetch {
+      padding: 13px 26px;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all var(--transition);
+      box-shadow: 0 4px 16px var(--accent-glow);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.01em;
+    }
+    .btn-fetch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(99,102,241,0.3);
+    }
+    .btn-fetch:active { transform: translateY(0); box-shadow: 0 2px 8px var(--accent-glow); transition: 0.05s; }
+    .btn-fetch:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-fetch.loading { pointer-events: none; }
+    .btn-fetch .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .btn-fetch.loading .spinner { display: inline-block; }
+    .btn-fetch.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Result Panel (Media Previews) ─── */
+    .result-panel {
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .result-label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .media-container {
+      background: var(--surface-alt);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    .media-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .media-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .media-preview {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      background: #000;
+      margin-bottom: 10px;
+    }
+    audio.media-preview {
+      width: 100%;
+      max-height: 50px;
+    }
+    .download-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition);
+      font-family: var(--font-sans);
+    }
+    .btn-download:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      color: var(--accent);
+      box-shadow: 0 4px 10px rgba(99,102,241,0.2);
+    }
+    .btn-download.video { border-left: 4px solid var(--accent); }
+    .btn-download.audio { border-left: 4px solid var(--success); }
+    .btn-download.image { border-left: 4px solid var(--warning); }
+
+    .raw-json-toggle {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 0;
+      margin-top: 12px;
+      font-family: var(--font-sans);
+      transition: color var(--transition);
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+    .raw-json-toggle:hover { color: var(--accent); }
+    pre.raw-json {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #2a2a3d;
+      display: none;
+      margin-top: 8px;
+    }
+    pre.raw-json.open { display: block; }
+
+    .placeholder-text {
+      text-align: center;
+      padding: 32px 16px;
+      color: var(--text-soft);
+      font-family: var(--font-sans);
+    }
+
+    /* ── Footer ─────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 24px 20px;
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      transition: all var(--transition);
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer a:hover { text-decoration: underline; }
+    .footer .heart {
+      color: #ef4444;
+      animation: heartbeat 1.5s infinite;
+      display: inline-block;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+    }
+
+    /* ── Toast ──────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1e1e2e;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-xl);
+      z-index: 999;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      font-family: var(--font-sans);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.success { background: #065f46; color: #d1fae5; }
+    .toast.error { background: #7f1d1d; color: #fee2e2; }
+
+    /* ── Scrollbar ──────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #334155; }
+  </style>
+</head>
+<body data-theme="light">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="SaveFlow Home">
+        <span class="logo-icon">💾</span>
+        <span class="logo-text">SaveFlow</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/Eliasilyz" target="_blank" rel="noopener noreferrer" class="github-link" title="GitHub Profile" aria-label="GitHub Profile">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>@Eliasilyz</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <main class="main" role="main">
+    <section class="hero-card" aria-labelledby="heroTitle">
+      <div class="hero-badge">
+        <span class="dot"></span> 17+ Platforms • Preview & Download
+      </div>
+      <h1 id="heroTitle" class="hero-title">SaveFlow — All in One Social Media Downloader</h1>
+      <p class="hero-subtitle">
+        Free TikTok downloader, Instagram downloader, and more. Paste any link from 17+ platforms.
+        <strong>Embedded previews, separate video/audio/image downloads, no ads.</strong>
+      </p>
+
+      <div class="input-row">
+        <select id="platformSelect" aria-label="Select platform">
+          <option value="auto">🔍 Auto Detect</option>
+          <option value="instagram">📷 Instagram</option>
+          <option value="tiktok">🎵 TikTok</option>
+          <option value="facebook">📘 Facebook</option>
+          <option value="twitter">🐦 Twitter / X</option>
+          <option value="youtube">▶️ YouTube</option>
+          <option value="mediafire">📁 MediaFire</option>
+          <option value="capcut">✂️ CapCut</option>
+          <option value="gdrive">☁️ Google Drive</option>
+          <option value="pinterest">📌 Pinterest</option>
+          <option value="douyin">🎶 Douyin</option>
+          <option value="xiaohongshu">📕 Xiaohongshu</option>
+          <option value="snackvideo">🍿 SnackVideo</option>
+          <option value="cocofun">🎬 Cocofun</option>
+          <option value="spotify">🎧 Spotify</option>
+          <option value="soundcloud">☁️ SoundCloud</option>
+          <option value="threads">🧵 Threads</option>
+          <option value="kuaishou">⚡ Kuaishou</option>
+          <option value="yts">🎥 YTS (Movie Search)</option>
+        </select>
+        <input id="urlInput" type="text" placeholder="Paste any supported URL here..." aria-label="Media URL input" autocomplete="off" />
+        <button id="downloadBtn" class="btn-fetch" aria-label="Fetch media">
+          <span class="spinner"></span>
+          <span class="btn-text">Download</span>
+        </button>
+      </div>
+
+      <!-- Result Panel with Media Previews -->
+      <div class="result-panel">
+        <div class="result-header">
+          <span class="result-label">📋 Preview & Downloads</span>
+        </div>
+        <div id="resultContainer" class="media-container">
+          <div class="placeholder-text">No data yet — paste a URL and hit <strong>Download</strong> ✨</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer" role="contentinfo">
+    <p>
+      Built with <span class="heart">♥</span> by
+      <a href="https://github.com/Eliasilyz" target="_blank" rel="noopener noreferrer">@Eliasilyz</a>
+      &nbsp;—&nbsp; SaveFlow is open source on
+      <a href="https://github.com/Eliasilyz/Media-downloader" target="_blank" rel="noopener noreferrer">GitHub</a>
+      &nbsp;—&nbsp; Powered by
+      <a href="https://farelhanafi.my.id" target="_blank" rel="noopener noreferrer">Irvan Farael Hanafi</a>
+    </p>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/btch-downloader/dist/browser/index.min.js"></script>
+  <script>
+    (function() {
+      const resultContainer = document.getElementById('resultContainer');
+      const btn = document.getElementById('downloadBtn');
+      const input = document.getElementById('urlInput');
+      const platformSelect = document.getElementById('platformSelect');
+      const toast = document.getElementById('toast');
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+
+      const platformPlaceholders = {
+        auto: 'Paste any supported URL here...',
+        instagram: 'Paste Instagram URL (e.g., https://www.instagram.com/p/...)',
+        tiktok: 'Paste TikTok URL (e.g., https://www.tiktok.com/@user/video/...)',
+        facebook: 'Paste Facebook URL (e.g., https://www.facebook.com/watch/?v=...)',
+        twitter: 'Paste Twitter/X URL (e.g., https://twitter.com/user/status/...)',
+        youtube: 'Paste YouTube URL (e.g., https://youtu.be/...)',
+        mediafire: 'Paste MediaFire URL (e.g., https://www.mediafire.com/file/...)',
+        capcut: 'Paste CapCut URL (e.g., https://www.capcut.com/template-detail/...)',
+        gdrive: 'Paste Google Drive URL (e.g., https://drive.google.com/file/d/...)',
+        pinterest: 'Paste Pinterest URL (e.g., https://pin.it/...) or search query',
+        douyin: 'Paste Douyin URL (e.g., https://v.douyin.com/...)',
+        xiaohongshu: 'Paste Xiaohongshu URL (e.g., https://xhslink.com/...)',
+        snackvideo: 'Paste SnackVideo URL (e.g., https://s.snackvideo.com/p/...)',
+        cocofun: 'Paste Cocofun URL (e.g., https://www.icocofun.com/share/post/...)',
+        spotify: 'Paste Spotify URL (e.g., https://open.spotify.com/track/...)',
+        soundcloud: 'Paste SoundCloud URL (e.g., https://soundcloud.com/...)',
+        threads: 'Paste Threads URL (e.g., https://www.threads.net/@user/post/...)',
+        kuaishou: 'Paste Kuaishou URL (e.g., https://v.kuaishou.com/...)',
+        yts: 'Enter YTS query (e.g., "Inception 2010")'
+      };
+
+      const regexMap = {
+        instagram: /instagram\.com\/(p|reel|tv)\//i,
+        tiktok: /tiktok\.com/i,
+        facebook: /facebook\.com/i,
+        twitter: /(twitter|x)\.com/i,
+        youtube: /(youtube\.com|youtu\.be)/i,
+        mediafire: /mediafire\.com/i,
+        capcut: /capcut\.com/i,
+        gdrive: /drive\.google\.com/i,
+        pinterest: /(pin\.it|pinterest\.com)/i,
+        douyin: /douyin\.com/i,
+        xiaohongshu: /(xiaohongshu|xhslink)\.com/i,
+        snackvideo: /(snackvideo\.com|s\.snackvideo\.com)/i,
+        cocofun: /(icocofun|cocofun)\.com/i,
+        spotify: /(open\.spotify|play\.spotify|spotify)\.com/i,
+        soundcloud: /soundcloud\.com/i,
+        threads: /threads\.net/i,
+        kuaishou: /kuaishou\.com/i
+      };
+
+      const fnMap = {
+        instagram: 'igdl',
+        tiktok: 'ttdl',
+        facebook: 'fbdown',
+        twitter: 'twitter',
+        youtube: 'youtube',
+        mediafire: 'mediafire',
+        capcut: 'capcut',
+        gdrive: 'gdrive',
+        pinterest: 'pinterest',
+        douyin: 'douyin',
+        xiaohongshu: 'xiaohongshu',
+        snackvideo: 'snackvideo',
+        cocofun: 'cocofun',
+        spotify: 'spotify',
+        soundcloud: 'soundcloud',
+        threads: 'threads',
+        kuaishou: 'kuaishou',
+        yts: 'yts'
+      };
+
+      let toastTimer;
+      function showToast(msg, type = '') {
+        clearTimeout(toastTimer);
+        toast.textContent = msg;
+        toast.className = 'toast ' + type + ' show';
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+
+      function isValidUrl(str) {
+        try { new URL(str); return true; } catch (_) { return false; }
+      }
+
+      function detectPlatform(inputVal, selected) {
+        if (selected !== 'auto') return selected;
+        if (isValidUrl(inputVal)) {
+          for (const [name, regex] of Object.entries(regexMap)) {
+            if (regex.test(inputVal)) return name;
+          }
+          return 'pinterest';
+        }
+        return 'yts';
+      }
+
+      function renderMedia(data) {
+        if (!data || typeof data !== 'object') {
+          return '<div class="placeholder-text">⚠️ Invalid data received</div>';
+        }
+        if (data.status === false || data.error) {
+          return `<div class="placeholder-text" style="color:var(--error)">❌ ${data.message || data.error || 'Unknown error'}</div>`;
+        }
+
+        let html = '';
+        const title = data.title || data.title_audio || '';
+        const thumbnail = data.thumbnail || '';
+
+        const makeDownloadBtn = (url, label, typeClass) => {
+          if (!url) return '';
+          const fileName = url.split('/').pop().split('?')[0] || 'media';
+          return `<a href="${url}" download="${fileName}" class="btn-download ${typeClass}" target="_blank" rel="noopener">⬇️ ${label}</a>`;
+        };
+
+        if (Array.isArray(data.video) && data.video.length > 0) {
+          data.video.forEach((videoUrl, i) => {
+            html += `<div class="media-card">`;
+            if (title) html += `<div class="media-title">🎬 ${title} ${data.video.length>1 ? '(Video '+(i+1)+')' : ''}</div>`;
+            html += `<video class="media-preview" controls preload="metadata" src="${videoUrl}" poster="${thumbnail}"></video>`;
+            html += `<div class="download-buttons">${makeDownloadBtn(videoUrl, 'Download Video', 'video')}</div>`;
+            html += `</div>`;
+          });
+        }
+
+        if (Array.isArray(data.audio) && data.audio.length > 0) {
+          data.audio.forEach((audioUrl, i) => {
+            html += `<div class="media-card">`;
+            if (title) html += `<div class="media-title">🎵 ${data.title_audio || title} ${data.audio.length>1 ? '(Audio '+(i+1)+')' : ''}</div>`;
+            html += `<audio class="media-preview" controls preload="metadata" src="${audioUrl}"></audio>`;
+            html += `<div class="download-buttons">${makeDownloadBtn(audioUrl, 'Download Audio', 'audio')}</div>`;
+            html += `</div>`;
+          });
+        }
+
+        if (Array.isArray(data.images) || Array.isArray(data.media)) {
+          const images = data.images || data.media || [];
+          images.forEach((img, i) => {
+            const imgUrl = typeof img === 'string' ? img : img.url;
+            if (!imgUrl) return;
+            html += `<div class="media-card">`;
+            if (title) html += `<div class="media-title">🖼️ ${title} ${images.length>1 ? '(Image '+(i+1)+')' : ''}</div>`;
+            html += `<img class="media-preview" src="${imgUrl}" alt="preview" loading="lazy" onerror="this.style.display='none'" />`;
+            html += `<div class="download-buttons">${makeDownloadBtn(imgUrl, 'Download Image', 'image')}</div>`;
+            html += `</div>`;
+          });
+        }
+
+        if (!html && data.url) {
+          const url = data.url;
+          const isVideo = /\.(mp4|mov|webm)($|\?)/i.test(url);
+          const isAudio = /\.(mp3|wav|ogg|m4a)($|\?)/i.test(url);
+          const isImage = /\.(jpg|jpeg|png|gif|webp)($|\?)/i.test(url);
+          html += `<div class="media-card">`;
+          if (title) html += `<div class="media-title">📁 ${title}</div>`;
+          if (isVideo) html += `<video class="media-preview" controls src="${url}" poster="${thumbnail}"></video>`;
+          else if (isAudio) html += `<audio class="media-preview" controls src="${url}"></audio>`;
+          else if (isImage) html += `<img class="media-preview" src="${url}" alt="preview" />`;
+          else html += `<p style="word-break:break-all;color:var(--text-muted)">${url}</p>`;
+          html += `<div class="download-buttons">${makeDownloadBtn(url, 'Download File', 'video')}</div>`;
+          html += `</div>`;
+        }
+
+        if (html) {
+          const jsonStr = JSON.stringify(data, null, 2);
+          html += `<button class="raw-json-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '🔽 Hide Raw JSON' : '📄 Show Raw JSON';">📄 Show Raw JSON</button>`;
+          html += `<pre class="raw-json">${escapeHtml(jsonStr)}</pre>`;
+        } else {
+          const jsonStr = JSON.stringify(data, null, 2);
+          html = `<div class="media-card"><div class="media-title">📋 Response (no preview available)</div><pre class="raw-json" style="display:block;max-height:400px;">${escapeHtml(jsonStr)}</pre></div>`;
+        }
+
+        return html || '<div class="placeholder-text">No downloadable media found in response.</div>';
+      }
+
+      function escapeHtml(text) {
+        return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+      }
+
+      function setResult(data) {
+        resultContainer.innerHTML = renderMedia(data);
+        if (window.innerWidth <= 600) {
+          resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      function setLoading(text) {
+        resultContainer.innerHTML = `<div class="placeholder-text">⏳ ${text}</div>`;
+      }
+
+      function setError(message) {
+        resultContainer.innerHTML = `<div class="placeholder-text" style="color:var(--error)">❌ ${message}</div>`;
+      }
+
+      async function handleFetch() {
+        const inputVal = input.value.trim();
+        if (!inputVal) {
+          showToast('Please enter a valid URL or YTS query!', 'error');
+          input.focus();
+          return;
+        }
+
+        btn.classList.add('loading');
+        btn.disabled = true;
+        setLoading('Detecting platform...');
+
+        try {
+          const btch = window.btch;
+          if (!btch) throw new Error('btch-downloader library not loaded.');
+
+          const platform = detectPlatform(inputVal, platformSelect.value);
+          const fnName = fnMap[platform];
+          const fn = btch[fnName];
+          if (!fn) throw new Error('Downloader function missing for ' + platform);
+
+          setLoading('Detected: ' + platform + ' — Fetching data...');
+          const res = await fn(inputVal);
+          setResult(res);
+          showToast('✅ Data fetched successfully!', 'success');
+        } catch (err) {
+          setError(err.message || String(err));
+          showToast('❌ ' + (err.message || 'Something went wrong'), 'error');
+        } finally {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      }
+
+      btn.addEventListener('click', handleFetch);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); handleFetch(); }
+      });
+
+      platformSelect.addEventListener('change', () => {
+        input.placeholder = platformPlaceholders[platformSelect.value] || platformPlaceholders['auto'];
+        input.value = '';
+        input.focus();
+        resultContainer.innerHTML = '<div class="placeholder-text">No data yet — paste a URL and hit <strong>Fetch</strong> ✨</div>';
+      });
+
+      // Theme toggle
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          body.setAttribute('data-theme', 'dark');
+          themeToggle.textContent = '☀️';
+          themeToggle.setAttribute('aria-label', 'Toggle light mode');
+        } else {
+          body.setAttribute('data-theme', 'light');
+          themeToggle.textContent = '🌙';
+          themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        }
+        try { localStorage.setItem('saveflow-theme', theme); } catch {}
+      }
+
+      const savedTheme = (() => { try { return localStorage.getItem('saveflow-theme'); } catch { return null; } })();
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+      themeToggle.addEventListener('click', () => {
+        const current = body.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!savedTheme) setTheme(e.matches ? 'dark' : 'light');
+      });
+
+      input.placeholder = platformPlaceholders['auto'];
+    })();
+  </script>
+</body>
 </html>
