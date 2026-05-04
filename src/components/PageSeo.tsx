@@ -8,7 +8,7 @@ interface PageSeoProps {
 }
 
 const SITE_NAME = "SaveFlow";
-const BASE_URL = "https://tools.farelhanafi.my.id";
+const BASE_URL = "https://tool.farelhanafi.my.id";
 
 export function PageSeo({ title, description, canonical, keywords }: PageSeoProps) {
   const fullUrl = `${BASE_URL}${canonical}`;

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Single-repo React + Vite app using TypeScript. **SaveFlow** adalah website media downloader multi-platform untuk domain `tools.farelhanafi.my.id`.
+Single-repo React + Vite app using TypeScript. **SaveFlow** adalah website media downloader multi-platform untuk domain `tool.farelhanafi.my.id`.
 
 ## Project: SaveFlow
 
