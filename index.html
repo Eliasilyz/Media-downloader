@@ -11,9 +11,7 @@
   <meta name="author" content="Eliasilyz" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="google-site-verification" content="HoZgwYJz6Z5gjLcl6I91BN6MIOZDP9jMApEHGsJidqM" />
   <link rel="canonical" href="https://tool.farelhanafi.my.id" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="SaveFlow — TikTok, Instagram & All in One Social Media Downloader" />
@@ -256,7 +254,7 @@
       .main { padding: 16px 12px 32px; }
     }
 
-    /* ── Hero Card (full width) ────────── */
+    /* ── Hero Card ──────────────────────── */
     .hero-card {
       background: var(--surface);
       border-radius: var(--radius-xl);
@@ -414,7 +412,7 @@
     .btn-fetch.loading .btn-text { display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Result Panel (Media Previews) ─── */
+    /* ── Result Panel ──────────────────── */
     .result-panel {
       margin-top: 24px;
       position: relative;
@@ -538,6 +536,53 @@
       font-family: var(--font-sans);
     }
 
+    /* ── Static Content Sections ───────── */
+    .content-section {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .content-section h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .content-section p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .platform-item {
+      background: var(--surface-alt);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      border: 1px solid var(--border-light);
+    }
+    .faq-item {
+      margin-bottom: 16px;
+    }
+    .faq-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
     /* ── Footer ─────────────────────────── */
     .footer {
       text-align: center;
@@ -616,6 +661,7 @@
 
   <!-- ═══════════════ MAIN ═══════════════ -->
   <main class="main" role="main">
+    <!-- Hero + Downloader -->
     <section class="hero-card" aria-labelledby="heroTitle">
       <div class="hero-badge">
         <span class="dot"></span> 17+ Platforms • Preview & Download
@@ -651,18 +697,72 @@
         <input id="urlInput" type="text" placeholder="Paste any supported URL here..." aria-label="Media URL input" autocomplete="off" />
         <button id="downloadBtn" class="btn-fetch" aria-label="Fetch media">
           <span class="spinner"></span>
-          <span class="btn-text">Download</span>
+          <span class="btn-text">⚡ Fetch</span>
         </button>
       </div>
 
-      <!-- Result Panel with Media Previews -->
       <div class="result-panel">
         <div class="result-header">
           <span class="result-label">📋 Preview & Downloads</span>
         </div>
         <div id="resultContainer" class="media-container">
-          <div class="placeholder-text">No data yet — paste a URL and hit <strong>Download</strong> ✨</div>
+          <div class="placeholder-text">No data yet — paste a URL and hit <strong>Fetch</strong> ✨</div>
         </div>
+      </div>
+    </section>
+
+    <!-- ══════════ STATIC SEO CONTENT ══════════ -->
+    <section class="content-section">
+      <h2>About SaveFlow</h2>
+      <p>
+        SaveFlow is a <strong>free, all-in-one social media downloader</strong> that lets you save videos, audio, and images from over 17 popular platforms. No registration, no ads, no watermarks added. Just paste a link, preview the media, and download with one click.
+      </p>
+      <p>
+        Whether you need a <strong>TikTok downloader</strong>, <strong>Instagram downloader</strong>, <strong>YouTube downloader</strong>, or a tool for Facebook, Twitter, Spotify, or SoundCloud — SaveFlow handles them all. It’s completely open source and respects your privacy.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>Supported Platforms</h2>
+      <div class="platform-grid">
+        <div class="platform-item">TikTok</div>
+        <div class="platform-item">Instagram</div>
+        <div class="platform-item">YouTube</div>
+        <div class="platform-item">Facebook</div>
+        <div class="platform-item">Twitter / X</div>
+        <div class="platform-item">Spotify</div>
+        <div class="platform-item">SoundCloud</div>
+        <div class="platform-item">Pinterest</div>
+        <div class="platform-item">CapCut</div>
+        <div class="platform-item">Google Drive</div>
+        <div class="platform-item">MediaFire</div>
+        <div class="platform-item">Threads</div>
+        <div class="platform-item">Douyin</div>
+        <div class="platform-item">Xiaohongshu</div>
+        <div class="platform-item">Kuaishou</div>
+        <div class="platform-item">SnackVideo</div>
+        <div class="platform-item">Cocofun</div>
+        <div class="platform-item">YTS (Movies)</div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is SaveFlow really free?</h3>
+        <p>Yes, 100% free. No hidden fees, no premium versions. We don't even show ads.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to install anything?</h3>
+        <p>No. SaveFlow works entirely in your browser. Just paste a link and download.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I download TikTok videos without watermark?</h3>
+        <p>SaveFlow fetches the media as provided by the platform. Many TikTok videos come without a watermark, depending on the source.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which platforms are supported?</h3>
+        <p>We support Instagram, TikTok, YouTube, Facebook, Twitter, Spotify, SoundCloud, Pinterest, CapCut, Google Drive, MediaFire, Threads, Douyin, Xiaohongshu, Kuaishou, SnackVideo, Cocofun, and YTS movie search.</p>
       </div>
     </section>
   </main>
@@ -673,9 +773,9 @@
       Built with <span class="heart">♥</span> by
       <a href="https://github.com/Eliasilyz" target="_blank" rel="noopener noreferrer">@Eliasilyz</a>
       &nbsp;—&nbsp; SaveFlow is open source on
-      <a href="https://github.com/Eliasilyz/Media-downloader" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/Eliasilyz" target="_blank" rel="noopener noreferrer">GitHub</a>
       &nbsp;—&nbsp; Powered by
-      <a href="https://farelhanafi.my.id" target="_blank" rel="noopener noreferrer">Irvan Farael Hanafi</a>
+      <a href="https://github.com/hostinger-bot/btch-downloader" target="_blank" rel="noopener noreferrer">btch-downloader</a>
     </p>
   </footer>
 
@@ -922,7 +1022,6 @@
         resultContainer.innerHTML = '<div class="placeholder-text">No data yet — paste a URL and hit <strong>Fetch</strong> ✨</div>';
       });
 
-      // Theme toggle
       function setTheme(theme) {
         if (theme === 'dark') {
           body.setAttribute('data-theme', 'dark');
